@@ -27,7 +27,7 @@ window.onload = function () {
     //Called when the link is clicked
     link.onclick = function() {
         
-        var numberOfCases = 3;
+        var numberOfCases = 2;
         var randomNumber = Math.floor((Math.random() * numberOfCases) + 1);
             
         setYoutubeHidden();
@@ -43,14 +43,7 @@ window.onload = function () {
                 sayCoolFact();
                 break;
             case 2:
-                document.getElementById("title-of-activity").innerText = "Place Holder";
-                document.getElementById("cool-fact").innerText = "Place Holder for cool youtube videos";
-                break;
-            case 3:
-                document.getElementById("title-of-activity").innerText = "Cool Video";
-                document.getElementById("cool-fact").innerText = "Watch this cool video";
-                document.getElementById("youtube").outerHTML = "<div style=\"width: 560px; height: 340px; margin: 25px auto;\" id=\"youtube\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/OIwxPsp-dKY\" frameborder=\"0\" allowfullscreen></iframe>";
-                setYoutubeVisible(); 
+                showYoutubeVideo();
                 break;
         }
         
@@ -95,6 +88,44 @@ window.onload = function () {
         }
         
         return false;
+    }
+    
+    function showYoutubeVideo()
+    {
+        var totalNumberOfVideos = 1;
+        var numberOfVideos = Math.floor((Math.random() * totalNumberOfVideos) + 1);
+        
+        var videoID;
+        var videoTitle;
+        var videoText;
+        
+        switch (numberOfVideos)
+        {
+            default:
+                document.getElementById("title-of-activity").innerText = "{Error} {Youtube Video}";
+                document.getElementById("cool-fact").innerText = "Oh noes! something went wrong! [Youtube Video]";
+                videoTitle = "{Error} {Youtube Video}";
+                videoText = "Oh noes! something went wrong! [Youtube Video]";
+                videoID = "mKkLjJHwRec";
+                break;
+            case 1:
+                videoTitle = "Funny Video";
+                videoText = "Enjoy this funny video!";
+                videoID = "OIwxPsp-dKY";
+                break;
+        }
+        
+        var videoURL = "https://www.youtube.com/embed/" + videoID;
+        callYoutubeVideo(videoURL, videoTitle, videoText);
+    }
+    
+    function callYoutubeVideo(url, title, text)
+    {
+        document.getElementById("title-of-activity").innerText = title;
+        document.getElementById("cool-fact").innerText = text;
+        document.getElementById("youtube").outerHTML = "<div style=\"width: 560px; height: 340px; margin: 25px auto;\" id=\"youtube\"><iframe width=\"560\" height=\"315\" src=" + 
+        url + " frameborder=\"0\" allowfullscreen></iframe>";
+        setYoutubeVisible();
     }
     
     function getLinesFromTextFile(file)
