@@ -29,7 +29,7 @@ window.onload = function() {
     
     function sayCoolFact()
     {
-        var totalNumberOfFacts = 4;
+        var totalNumberOfFacts = 6;
         var numberOfFacts = Math.floor((Math.random() * totalNumberOfFacts) + 1);
         
         switch (numberOfFacts)
@@ -51,6 +51,16 @@ window.onload = function() {
             case 4:
                 document.getElementById("cool-fact").innerText = "Nutella was invented during WWII, when an Italian pastry maker mixed hazelnuts " +
                 "into chocolate to extend his chocolate ration.";
+                break;
+            case 5:
+                document.getElementById("cool-fact").innerText = "The present population is expected to rise to 8 billion by 2020, 10 billion by 2050, and 15 " +
+                "billion by 2080!";
+                break;
+            case 6:
+                document.getElementById("cool-fact").innerHTML = "At <a style=\"color:aqua; margin: 0; padding: 0;\"" +
+                "href=\"https://nthitz.github.io/turndownforwhatjs/\" id=\"cool-fact\" target=\"_blank\">" +
+                "this site</a> you can make any website turn down.";
+                
                 break;
         }
         
