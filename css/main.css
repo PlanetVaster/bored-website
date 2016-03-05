@@ -73,3 +73,8 @@ noscript {
 #bored_button:hover {
     opacity: 0.8;
 }
+
+#youtube {
+    visibility: hidden;
+    align-content: center;
+}

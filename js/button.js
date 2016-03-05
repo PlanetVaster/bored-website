@@ -16,9 +16,21 @@ window.onload = function () {
     
     file.send();
     
+    function setYoutubeVisible() {
+        document.getElementById("youtube").style.visibility = "visible";
+    }
+    
+    function setYoutubeHidden() {
+        document.getElementById("youtube").style.visibility = "hidden";
+    }
+    
     //Called when the link is clicked
     link.onclick = function() {
-        var randomNumber = Math.floor((Math.random() * 2) + 1);
+        
+        var numberOfCases = 3;
+        var randomNumber = Math.floor((Math.random() * numberOfCases) + 1);
+            
+        setYoutubeHidden();
         
         switch (randomNumber)
         {
@@ -33,6 +45,12 @@ window.onload = function () {
             case 2:
                 document.getElementById("title-of-activity").innerText = "Place Holder";
                 document.getElementById("cool-fact").innerText = "Place Holder for cool youtube videos";
+                break;
+            case 3:
+                document.getElementById("title-of-activity").innerText = "Cool Video";
+                document.getElementById("cool-fact").innerText = "Watch this cool video";
+                document.getElementById("youtube").outerHTML = "<div style=\"width: 560px; height: 340px; margin: 25px auto;\" id=\"youtube\"><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/OIwxPsp-dKY\" frameborder=\"0\" allowfullscreen></iframe>";
+                setYoutubeVisible(); 
                 break;
         }
         
