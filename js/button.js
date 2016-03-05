@@ -52,31 +52,22 @@ window.onload = function () {
                 break;
             case 1:
                 document.getElementById("cool-fact").innerText = facts[1];
-                //document.getElementById("cool-fact").innerText = "In 2006 an Australian man tried to sell New Zealand on eBay. The price reached " + 
-                //"$3,000 before eBay shut it down!";
                 break;
             case 2:
                 document.getElementById("cool-fact").innerText = facts[2];
-                //document.getElementById("cool-fact").innerText = "In Japan, letting a sumo wrestler make your baby cry is considered good luck.";
                 break;
             case 3:
                 document.getElementById("cool-fact").innerText = facts[3];
-                //document.getElementById("cool-fact").innerText = "It would take at least 480 bananas to die of potassium overdose.";
                 break;
             case 4:
                 document.getElementById("cool-fact").innerText = facts[4];
-                //document.getElementById("cool-fact").innerText = "Nutella was invented during WWII, when an Italian pastry maker mixed hazelnuts " +
-                //"into chocolate to extend his chocolate ration.";
                 break;
             case 5:
                 document.getElementById("cool-fact").innerText = facts[5];
-                //document.getElementById("cool-fact").innerText = "The present population is expected to rise to 8 billion by 2020, 10 billion by 2050, and 15 " +
-                //"billion by 2080!";
                 break;
             case 6:
                 document.getElementById("cool-fact").innerText = facts[6];
-                //document.getElementById("cool-fact").innerText = "The tip of a bullwhip moves so fast the sound you hear" +
-                //" is actually a tiny sonic boom!";
+                break;
             case 7:
                 document.getElementById("title-of-activity").innerText = "Cool Website";
                 document.getElementById("cool-fact").innerHTML = "At <a style=\"color:aqua; margin: 0; padding: 0;\"" +
