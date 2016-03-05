@@ -35,7 +35,7 @@ window.onload = function() {
         switch (numberOfFacts)
         {
             default:
-                document.getElementById("title-of-activity").innerHTML = "{Error} {Cool Fact}";
+                document.getElementById("title-of-activity").innerText = "{Error} {Cool Fact}";
                 document.getElementById("cool-fact").innerText = "Oh noes! something went wrong! [Cool Fact]";
                 break;
             case 1:
@@ -57,6 +57,7 @@ window.onload = function() {
                 "billion by 2080!";
                 break;
             case 6:
+                document.getElementById("title-of-activity").innerText = "Cool Website";
                 document.getElementById("cool-fact").innerHTML = "At <a style=\"color:aqua; margin: 0; padding: 0;\"" +
                 "href=\"https://nthitz.github.io/turndownforwhatjs/\" id=\"cool-fact\" target=\"_blank\">" +
                 "this site</a> you can make any website turn down.";
