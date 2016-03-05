@@ -1,0 +1,75 @@
+body {
+    background-color: rgb(30, 30, 30);
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+#title {
+    text-align: center;
+    margin: 8px 0 0 0;
+    padding: 0;
+    font-family: 'Oswald', sans-serif;
+    color: firebrick;
+    font-size: 36px;
+    width: 100%;
+}
+
+#subtitle {
+    text-align: center;
+    margin: 5px 0 0 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: forestgreen;
+    font-size: 14px;
+    width: 100%;
+}
+
+#bored_button {
+    opacity: 1.0;
+    margin: 100px auto auto 45.5%;
+}
+
+#title-of-activity {
+    margin: 0;
+    margin-top: 80px;
+    padding: 0;
+    text-align: center;
+    color: darkgoldenrod;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+#cool-fact {
+    margin: 0;
+    margin-top: 50px;
+    padding: 0;
+    text-align: center;
+    color: aliceblue;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+noscript {
+    padding: 1px;
+    background-color: brown;
+    color: yellow;
+    font-size: 24px;
+}
+
+/* Hovering */
+#bored_button:hover {
+    opacity: 0.8;
+}
