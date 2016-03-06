@@ -144,8 +144,35 @@ window.onload = function () {
     {
         document.getElementById("title-of-activity").innerText = title;
         document.getElementById("cool-fact").innerText = text;
-        document.getElementById("youtube").outerHTML = "<div style=\"width: 560px; height: 340px; margin: 25px auto;\" id=\"youtube\"><iframe width=\"560\" height=\"315\" src=" + 
-        url + " frameborder=\"0\" allowfullscreen></iframe>";
+        
+        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+        if (w > 800)
+        {
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 560px; height: 340px; margin-top: 20px;\" id=\"youtube\"><iframe width=\"560\" height=\"315\" src=" + 
+            url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
+        } else if (w <= 560 && w >= 500)
+        {
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 500px; height: 340px; margin-top: 20px;\" id=\"youtube\"><iframe width=\"500\" height=\"315\" src=" + 
+            url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
+        } else if (w <= 500 && w >= 450)
+        {
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 450px; height: 340px; margin-top: 20px;\" id=\"youtube\"><iframe width=\"450\" height=\"315\" src=" + 
+            url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
+        } else if (w <= 450 && w >= 400)
+        {
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 400px; height: 340px; margin-top: 20px;\" id=\"youtube\"><iframe width=\"400\" height=\"315\" src=" + 
+            url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
+        } else if (w <= 400 && w >= 350)
+        {
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 350px; height: 340px; margin-top: 20px;\" id=\"youtube\"><iframe width=\"350\" height=\"315\" src=" + 
+            url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
+        } else if (w <= 350)
+        {
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 325px; height: 340px; margin-top: 20px;\" id=\"youtube\"><iframe width=\"325\" height=\"315\" src=" + 
+            url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
+        }
+            
+        
         setYoutubeVisible();
         return false;
     }
