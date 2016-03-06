@@ -6,18 +6,31 @@ window.onload = function () {
     //Get a reference to the link with an id of "bored_button_link"
     var link = document.getElementById("bored_button_link");
     var factsFile;
+    var videoFile;
     var facts = [null];
     var numOfFacts;
+    var videosInfo;
     
-    var file = new XMLHttpRequest();
-    file.open('GET', 'resources/facts.txt');
+    var localFactsFile = new XMLHttpRequest();
+    var localYoutubeFile = new XMLHttpRequest();
     
-    file.onreadystatechange = function() {
-        factsFile = file.responseText;
+    localYoutubeFile.overrideMimeType("application/json");
+    
+    localFactsFile.open('GET', 'resources/facts.txt', true);
+    localYoutubeFile.open('GET', 'resources/videos.json', true);
+    
+    localFactsFile.onreadystatechange = function() {
+        factsFile = localFactsFile.responseText;
         getLinesFromTextFile(factsFile);
     }
     
-    file.send();
+    localYoutubeFile.onreadystatechange = function() {
+        videoFile = localYoutubeFile.responseText;
+        videosInfo = JSON.parse(videoFile);
+    }
+    
+    localFactsFile.send();
+    localYoutubeFile.send();
     
     function setYoutubeVisible() {
         document.getElementById("youtube").style.visibility = "visible";
@@ -88,35 +101,17 @@ window.onload = function () {
         var videoTitle;
         var videoText;
         
-        switch (randomNumber)
+        if (randomNumber > 0 && randomNumber <= totalNumberOfVideos)
         {
-            default:
-                document.getElementById("title-of-activity").innerText = "{Error} {Youtube Video}";
-                document.getElementById("cool-fact").innerText = "Oh noes! something went wrong! [Youtube Video]";
-                videoTitle = "{Error} {Youtube Video}";
-                videoText = "Oh noes! something went wrong! [Youtube Video]";
-                videoID = "mKkLjJHwRec";
-                break;
-            case 1:
-                videoTitle = "Funny Video";
-                videoText = "Enjoy this funny video!";
-                videoID = "OIwxPsp-dKY";
-                break;
-            case 2:
-                videoTitle = "Aliens?";
-                videoText = "A youtube video by Alltime 10s"
-                videoID = "HKtj1CuLZD0";
-                break;
-            case 3:
-                videoTitle = "Typos, smh(shaking my head)";
-                videoText = "Always double check your work.";
-                videoID = "UlhGhj1tj-A";
-                break;
-            case 4:
-                videoTitle = "Tech inspired by video games";
-                videoText = "They're not a waste of time";
-                videoID = "BLW6dV-pmOg";
-                break;
+            videoTitle = videosInfo.videos[randomNumber].title;
+            videoText = videosInfo.videos[randomNumber].text;
+            videoID = videosInfo.videos[randomNumber].id;
+        } else {
+            document.getElementById("title-of-activity").innerText = "{Error} {Youtube Video}";
+            document.getElementById("cool-fact").innerText = "Oh noes! something went wrong! [Youtube Video]";
+            videoTitle = "{Error} {Youtube Video}";
+            videoText = "Oh noes! something went wrong! [Youtube Video]";
+            videoID = "mKkLjJHwRec"
         }
         
         var videoURL = "https://www.youtube.com/embed/" + videoID;
@@ -176,6 +171,7 @@ window.onload = function () {
         
         return false;
     }
+    
 return false;
 }
 

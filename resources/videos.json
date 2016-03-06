@@ -1,0 +1,21 @@
+{ "videos": [
+    {
+        "title": "Funny Video", 
+        "text": "Enjoy this funny video!",
+        "id": "iOIwxPsp-dKY"
+    },
+    {
+        "title": "Aliens?", 
+        "text": "A youtube video by Alltime 10s", 
+        "id": "HKtj1CuLZD0"
+    },
+    {
+        "title": "Typos, smh(shaking my head)", 
+        "text": "Always double check your work.", 
+        "id": "UlhGhj1tj-A"
+    },
+    {
+        "title": "Tech inspired by video games", 
+        "text": "They're not a waste of time", 
+        "id": "BLW6dV-pmOg"
+}]}
