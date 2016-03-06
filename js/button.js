@@ -1,3 +1,5 @@
+var resizeUrl;
+
 //Wait for page to load
 window.onload = function () {
     
@@ -5,6 +7,7 @@ window.onload = function () {
     var link = document.getElementById("bored_button_link");
     var factsFile;
     var facts = [null];
+    var numOfFacts;
     
     var file = new XMLHttpRequest();
     file.open('GET', 'resources/facts.txt');
@@ -29,7 +32,7 @@ window.onload = function () {
     //Called when the link is clicked
     link.onclick = function() {
         
-        var numberOfCases = 2;
+        var numberOfCases = 3;
         var min = 1;
         var randomNumber = Math.floor(Math.random() * (numberOfCases)) + min;
             
@@ -48,6 +51,11 @@ window.onload = function () {
             case 2:
                 showYoutubeVideo();
                 break;
+            case 3:
+                document.getElementById("title-of-activity").innerText = "Cool Website";
+                document.getElementById("cool-fact").innerHTML = "At <a style=\"color:aqua; margin: 0; padding: 0 5px;\"" +
+                "href=\"https://nthitz.github.io/turndownforwhatjs/\" id=\"cool-fact\" target=\"_blank\">" +
+                "this site</a> you can make any website turn down for what.";
         }
         
         return false;
@@ -55,40 +63,16 @@ window.onload = function () {
     
     function sayCoolFact()
     {
-        var totalNumberOfFacts = 7;
+        var totalNumberOfFacts = 6;
         var min = 1;
         var randomNumber = Math.floor(Math.random() * (totalNumberOfFacts)) + min;
         
-        switch (randomNumber)
+        if (randomNumber > 0 && randomNumber <= totalNumberOfFacts)
         {
-            default:
-                document.getElementById("title-of-activity").innerText = "{Error} {Cool Fact}";
-                document.getElementById("cool-fact").innerText = "Oh noes! something went wrong! [Cool Fact]";
-                break;
-            case 1:
-                document.getElementById("cool-fact").innerText = facts[1];
-                break;
-            case 2:
-                document.getElementById("cool-fact").innerText = facts[2];
-                break;
-            case 3:
-                document.getElementById("cool-fact").innerText = facts[3];
-                break;
-            case 4:
-                document.getElementById("cool-fact").innerText = facts[4];
-                break;
-            case 5:
-                document.getElementById("cool-fact").innerText = facts[5];
-                break;
-            case 6:
-                document.getElementById("cool-fact").innerText = facts[6];
-                break;
-            case 7:
-                document.getElementById("title-of-activity").innerText = "Cool Website";
-                document.getElementById("cool-fact").innerHTML = "At <a style=\"color:aqua; margin: 0; padding: 0 5px;\"" +
-                "href=\"https://nthitz.github.io/turndownforwhatjs/\" id=\"cool-fact\" target=\"_blank\">" +
-                "this site</a> you can make any website turn down for what.";
-                break;
+            document.getElementById("cool-fact").innerText = facts[randomNumber];
+        } else {
+            document.getElementById("title-of-activity").innerText = "{Error} {Cool Fact}";
+            document.getElementById("cool-fact").innerText = "Oh noes! something went wrong! [Cool Fact]";
         }
         
         return false;
@@ -136,6 +120,9 @@ window.onload = function () {
         }
         
         var videoURL = "https://www.youtube.com/embed/" + videoID;
+        
+        resizeUrl = videoURL;
+        
         callYoutubeVideo(videoURL, videoTitle, videoText);
         return false;
     }
@@ -145,33 +132,32 @@ window.onload = function () {
         document.getElementById("title-of-activity").innerText = title;
         document.getElementById("cool-fact").innerText = text;
         
-        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         if (w > 800)
         {
             document.getElementById("youtube").outerHTML = "<div style=\"width: 560px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"560\" height=\"315\" src=" + 
             url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
         } else if (w <= 560 && w >= 500)
         {
-            document.getElementById("youtube").outerHTML = "<div style=\"width: 500px; height: 340px; margin-top: 20px;\" id=\"youtube\"><iframe width=\"500\" height=\"315\" src=" + 
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 500px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"500\" height=\"315\" src=" + 
             url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
         } else if (w <= 500 && w >= 450)
         {
-            document.getElementById("youtube").outerHTML = "<div style=\"width: 450px; height: 340px; margin-top: 20px;\" id=\"youtube\"><iframe width=\"450\" height=\"315\" src=" + 
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 450px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"450\" height=\"315\" src=" + 
             url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
         } else if (w <= 450 && w >= 400)
         {
-            document.getElementById("youtube").outerHTML = "<div style=\"width: 400px; height: 340px; margin-top: 20px;\" id=\"youtube\"><iframe width=\"400\" height=\"315\" src=" + 
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 400px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"400\" height=\"315\" src=" + 
             url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
         } else if (w <= 400 && w >= 350)
         {
-            document.getElementById("youtube").outerHTML = "<div style=\"width: 350px; height: 340px; margin-top: 20px;\" id=\"youtube\"><iframe width=\"350\" height=\"315\" src=" + 
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 350px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"350\" height=\"315\" src=" + 
             url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
         } else if (w <= 350)
         {
-            document.getElementById("youtube").outerHTML = "<div style=\"width: 325px; height: 340px; margin-top: 20px;\" id=\"youtube\"><iframe width=\"325\" height=\"315\" src=" + 
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 325px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"325\" height=\"315\" src=" + 
             url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
-        }
-            
+        }  
         
         setYoutubeVisible();
         return false;
@@ -185,6 +171,43 @@ window.onload = function () {
         {
             facts[i + 1] = lines[i];
         }
+        
+        numOfFacts = lines.length;
+        
         return false;
     }
+return false;
+}
+
+window.onresize = function () {
+        
+        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        if (w > 800)
+        {
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 560px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"560\" height=\"315\" src=" + 
+            resizeUrl + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
+        } else if (w <= 560 && w >= 500)
+        {
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 500px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"500\" height=\"315\" src=" + 
+            resizeUrl + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
+        } else if (w <= 500 && w >= 450)
+        {
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 450px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"450\" height=\"315\" src=" + 
+            resizeUrl + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
+        } else if (w <= 450 && w >= 400)
+        {
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 400px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"400\" height=\"315\" src=" + 
+            resizeUrl + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
+        } else if (w <= 400 && w >= 350)
+        {
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 350px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"350\" height=\"315\" src=" + 
+            resizeUrl + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
+        } else if (w <= 350)
+        {
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 325px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"325\" height=\"315\" src=" + 
+            resizeUrl + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
+        }
+    
+        document.getElementById("youtube").style.visibility = "visible";
+        document.getElementById("youtube").style.display = "flex";
 }
