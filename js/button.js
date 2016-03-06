@@ -18,10 +18,12 @@ window.onload = function () {
     
     function setYoutubeVisible() {
         document.getElementById("youtube").style.visibility = "visible";
+        document.getElementById("youtube").style.display = "flex";
     }
     
     function setYoutubeHidden() {
         document.getElementById("youtube").style.visibility = "hidden";
+        document.getElementById("youtube").style.display = "none";
     }
     
     //Called when the link is clicked

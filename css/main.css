@@ -21,6 +21,8 @@ body {
     color: firebrick;
     font-size: 36px;
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 #subtitle {
@@ -31,11 +33,20 @@ body {
     color: forestgreen;
     font-size: 14px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#button_container {
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
 }
 
 #bored_button {
     opacity: 1.0;
-    margin: 100px auto auto 45.5%;
+    /*margin: 100px auto auto 45.5%;*/
+    display: inline-flex;
 }
 
 #title-of-activity {
@@ -48,6 +59,8 @@ body {
     font-size: 24px;
     padding-left: 75px;
     padding-right: 75px;
+    display: flex;
+    justify-content: center;
 }
 
 #cool-fact {
@@ -60,6 +73,8 @@ body {
     font-size: 18px;
     padding-left: 75px;
     padding-right: 75px;
+    display: flex;
+    justify-content: center;
 }
 
 noscript {
@@ -77,6 +92,8 @@ noscript {
 #youtube {
     visibility: hidden;
     align-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 html {
@@ -93,10 +110,33 @@ footer {
     bottom: 0;
     height: 50px;
     width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 #copyright {
     text-align: center;
+    display: inline-flex;
+    justify-content: center;
     color: aliceblue;
     font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
+    height: 50px;
+    line-height: 50px;
+    width: auto;
+}
+
+#feedback {
+    float: right;
+    display: inline-flex;
+    margin: 0;
+    background-color: #22b222;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    text-decoration-color: #2222b2;
+    color: #2222b2;
+    width: 100px;
+    justify-content: center;
 }
