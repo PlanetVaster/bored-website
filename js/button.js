@@ -1,15 +1,19 @@
+/* node browser: true */ /* global $ */
+/* jslint browser: true */
+
 var resizeUrl;
 
 //Wait for page to load
 window.onload = function () {
     
+    "use strict";
+    
     //Get a reference to the link with an id of "bored_button_link"
     var link = document.getElementById("bored_button_link");
     var factsFile;
-    var videoFile;
     var facts = [null];
     var numOfFacts;
-    var videosInfo;
+    var videosInfo = [null];
     
     var localFactsFile = new XMLHttpRequest();
     var localYoutubeFile = new XMLHttpRequest();
@@ -22,12 +26,11 @@ window.onload = function () {
     localFactsFile.onreadystatechange = function() {
         factsFile = localFactsFile.responseText;
         getLinesFromTextFile(factsFile);
-    }
+    };
     
     localYoutubeFile.onreadystatechange = function() {
-        videoFile = localYoutubeFile.responseText;
-        videosInfo = JSON.parse(videoFile);
-    }
+        videosInfo = JSON.parse(localYoutubeFile.responseText);
+    };
     
     localFactsFile.send();
     localYoutubeFile.send();
@@ -53,10 +56,6 @@ window.onload = function () {
         
         switch (randomNumber)
         {
-            default:
-                document.getElementById("title-of-activity").innerText = "{Error} {OnClick}";
-                document.getElementById("cool-fact").innerText = "Oh noes! something went wrong!";
-                break;
             case 1:
                 document.getElementById("title-of-activity").innerText = "Cool Fact";
                 sayCoolFact();
@@ -69,18 +68,22 @@ window.onload = function () {
                 document.getElementById("cool-fact").innerHTML = "At <a style=\"color:aqua; margin: 0; padding: 0 5px;\"" +
                 "href=\"https://nthitz.github.io/turndownforwhatjs/\" id=\"cool-fact\" target=\"_blank\">" +
                 "this site</a> you can make any website turn down for what.";
+                break;
+            default:
+                document.getElementById("title-of-activity").innerText = "{Error} {OnClick}";
+                document.getElementById("cool-fact").innerText = "Oh noes! something went wrong!";
+                break;
         }
         
         return false;
-    }
+    };
     
     function sayCoolFact()
     {
-        var totalNumberOfFacts = 6;
         var min = 1;
-        var randomNumber = Math.floor(Math.random() * (totalNumberOfFacts)) + min;
+        var randomNumber = Math.floor(Math.random() * (numOfFacts)) + min;
         
-        if (randomNumber > 0 && randomNumber <= totalNumberOfFacts)
+        if (randomNumber > 0 && randomNumber <= numOfFacts)
         {
             document.getElementById("cool-fact").innerText = facts[randomNumber];
         } else {
@@ -94,24 +97,31 @@ window.onload = function () {
     function showYoutubeVideo()
     {
         var totalNumberOfVideos = 4;
-        var min = 1;
-        var randomNumber = Math.floor(Math.random() * (totalNumberOfVideos)) + min;
+        var randomNumber = Math.floor(Math.random() * (totalNumberOfVideos));
         
         var videoID;
         var videoTitle;
         var videoText;
         
-        if (randomNumber > 0 && randomNumber <= totalNumberOfVideos)
+        if (randomNumber >= 0 && randomNumber <= totalNumberOfVideos)
         {
             videoTitle = videosInfo.videos[randomNumber].title;
             videoText = videosInfo.videos[randomNumber].text;
             videoID = videosInfo.videos[randomNumber].id;
+            if (videoTitle == null || videoText == null || videoID == null)
+            {
+                document.getElementById("title-of-activity").innerText = "{Error} {Youtube Video}";
+                document.getElementById("cool-fact").innerText = "Oh noes! something went wrong! [Youtube Video]";
+                videoTitle = "{Error} {Youtube Video}";
+                videoText = "Oh noes! something went wrong! [Youtube Video]";
+                videoID = "mKkLjJHwRec";
+            }
         } else {
             document.getElementById("title-of-activity").innerText = "{Error} {Youtube Video}";
             document.getElementById("cool-fact").innerText = "Oh noes! something went wrong! [Youtube Video]";
             videoTitle = "{Error} {Youtube Video}";
             videoText = "Oh noes! something went wrong! [Youtube Video]";
-            videoID = "mKkLjJHwRec"
+            videoID = "mKkLjJHwRec";
         }
         
         var videoURL = "https://www.youtube.com/embed/" + videoID;
@@ -162,7 +172,8 @@ window.onload = function () {
     {
         var lines = file.split("\n");
         
-        for (var i = 0; i < lines.length; i++)
+        var i = 0;
+        for (i = 0; i < lines.length; i += 1)
         {
             facts[i + 1] = lines[i];
         }
@@ -173,11 +184,13 @@ window.onload = function () {
     }
     
 return false;
-}
+};
 
 window.onresize = function () {
         
+        "use strict";
         var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        
         if (w > 800)
         {
             document.getElementById("youtube").outerHTML = "<div style=\"width: 560px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"560\" height=\"315\" src=" + 
@@ -206,4 +219,4 @@ window.onresize = function () {
     
         document.getElementById("youtube").style.visibility = "visible";
         document.getElementById("youtube").style.display = "flex";
-}
+};
