@@ -2,6 +2,7 @@
 /* jslint browser: true */
 
 var resizeUrl;
+var youtubeVisible;
 
 //Wait for page to load
 window.onload = function () {
@@ -38,11 +39,13 @@ window.onload = function () {
     function setYoutubeVisible() {
         document.getElementById("youtube").style.visibility = "visible";
         document.getElementById("youtube").style.display = "flex";
+        youtubeVisible = true;
     }
     
     function setYoutubeHidden() {
         document.getElementById("youtube").style.visibility = "hidden";
         document.getElementById("youtube").style.display = "none";
+        youtubeVisible = false;
     }
     
     //Called when the link is clicked
@@ -216,7 +219,9 @@ window.onresize = function () {
             document.getElementById("youtube").outerHTML = "<div style=\"width: 325px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"325\" height=\"315\" src=" + 
             resizeUrl + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
         }
-    
-        document.getElementById("youtube").style.visibility = "visible";
-        document.getElementById("youtube").style.display = "flex";
+        if (youtubeVisible)
+        {
+            document.getElementById("youtube").style.visibility = "visible";
+            document.getElementById("youtube").style.display = "flex";
+        }
 };
