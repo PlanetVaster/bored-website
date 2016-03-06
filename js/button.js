@@ -148,7 +148,7 @@ window.onload = function () {
         var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
         if (w > 800)
         {
-            document.getElementById("youtube").outerHTML = "<div style=\"width: 560px; height: 340px; margin-top: 20px;\" id=\"youtube\"><iframe width=\"560\" height=\"315\" src=" + 
+            document.getElementById("youtube").outerHTML = "<div style=\"width: 560px; height: 340px; margin: 20px auto;\" id=\"youtube\"><iframe width=\"560\" height=\"315\" src=" + 
             url + " frameborder=\"0\" id=\"youtube-iframe\" allowfullscreen></iframe>";
         } else if (w <= 560 && w >= 500)
         {
