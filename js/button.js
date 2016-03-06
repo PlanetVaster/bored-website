@@ -28,7 +28,8 @@ window.onload = function () {
     link.onclick = function() {
         
         var numberOfCases = 2;
-        var randomNumber = Math.floor((Math.random() * numberOfCases) + 1);
+        var min = 1;
+        var randomNumber = Math.floor(Math.random() * (numberOfCases)) + min;
             
         setYoutubeHidden();
         
@@ -53,9 +54,10 @@ window.onload = function () {
     function sayCoolFact()
     {
         var totalNumberOfFacts = 7;
-        var numberOfFacts = Math.floor((Math.random() * totalNumberOfFacts) + 1);
+        var min = 1;
+        var randomNumber = Math.floor(Math.random() * (totalNumberOfFacts)) + min;
         
-        switch (numberOfFacts)
+        switch (randomNumber)
         {
             default:
                 document.getElementById("title-of-activity").innerText = "{Error} {Cool Fact}";
@@ -83,7 +85,7 @@ window.onload = function () {
                 document.getElementById("title-of-activity").innerText = "Cool Website";
                 document.getElementById("cool-fact").innerHTML = "At <a style=\"color:aqua; margin: 0; padding: 0;\"" +
                 "href=\"https://nthitz.github.io/turndownforwhatjs/\" id=\"cool-fact\" target=\"_blank\">" +
-                "this site</a> you can make any website turn down.";
+                "this site</a> you can make any website turn down for what.";
                 break;
         }
         
@@ -92,14 +94,15 @@ window.onload = function () {
     
     function showYoutubeVideo()
     {
-        var totalNumberOfVideos = 1;
-        var numberOfVideos = Math.floor((Math.random() * totalNumberOfVideos) + 1);
+        var totalNumberOfVideos = 4;
+        var min = 1;
+        var randomNumber = Math.floor(Math.random() * (totalNumberOfVideos)) + min;
         
         var videoID;
         var videoTitle;
         var videoText;
         
-        switch (numberOfVideos)
+        switch (randomNumber)
         {
             default:
                 document.getElementById("title-of-activity").innerText = "{Error} {Youtube Video}";
@@ -113,10 +116,26 @@ window.onload = function () {
                 videoText = "Enjoy this funny video!";
                 videoID = "OIwxPsp-dKY";
                 break;
+            case 2:
+                videoTitle = "Aliens?";
+                videoText = "A youtube video by Alltime 10s"
+                videoID = "HKtj1CuLZD0";
+                break;
+            case 3:
+                videoTitle = "Typos, smh(shaking my head)";
+                videoText = "Always double check your work.";
+                videoID = "UlhGhj1tj-A";
+                break;
+            case 4:
+                videoTitle = "Tech inspired by video games";
+                videoText = "They're not a waste of time";
+                videoID = "BLW6dV-pmOg";
+                break;
         }
         
         var videoURL = "https://www.youtube.com/embed/" + videoID;
         callYoutubeVideo(videoURL, videoTitle, videoText);
+        return false;
     }
     
     function callYoutubeVideo(url, title, text)
@@ -126,6 +145,7 @@ window.onload = function () {
         document.getElementById("youtube").outerHTML = "<div style=\"width: 560px; height: 340px; margin: 25px auto;\" id=\"youtube\"><iframe width=\"560\" height=\"315\" src=" + 
         url + " frameborder=\"0\" allowfullscreen></iframe>";
         setYoutubeVisible();
+        return false;
     }
     
     function getLinesFromTextFile(file)
@@ -136,5 +156,6 @@ window.onload = function () {
         {
             facts[i + 1] = lines[i];
         }
+        return false;
     }
 }
