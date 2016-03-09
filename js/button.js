@@ -99,7 +99,7 @@ window.onload = function () {
     
     function showYoutubeVideo()
     {
-        var totalNumberOfVideos = 4;
+        var totalNumberOfVideos = videosInfo.videos.length;
         var randomNumber = Math.floor(Math.random() * (totalNumberOfVideos));
         
         var videoID;
