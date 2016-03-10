@@ -23,7 +23,26 @@ function setYoutubeHidden() {
 }
 
 function showYoutubeVideo() {
+    var lastNumber1, lastNumber2, lastNumber3;
+    
     var randomNumber = Math.floor(Math.random() * numOfVideos);
+    
+    if (randomNumber == lastNumber1 || randomNumber == lastNumber2 || randomNumber == lastNumber3)
+    {
+        var noExit = true;
+        while (noExit)
+        {
+            randomNumber = Math.floor(Math.random() * numOfVideos);
+            if (randomNumber != lastNumber1 && randomNumber != lastNumber2 && randomNumber != lastNumber3)
+            {
+                noExit = false;
+            }
+        }
+    }
+    
+    lastNumber3 = lastNumber2;
+    lastNumber2 = lastNumber1;
+    lastNumber1 = randomNumber;
     
     var videoTitle;
     var videoText;
@@ -61,6 +80,21 @@ function callYoutubeVideo(videoUrl, videoTitle, videoText)
 function sayCoolFact() {
     var min = 1;
     var randomNumber = Math.floor(Math.random() * (numOfFacts)) + min;
+    
+    var lastNumber1, lastNumber2, lastNumber3;
+    
+    if (randomNumber == lastNumber1 || randomNumber == lastNumber2 || randomNumber == lastNumber3)
+    {
+        var noExit = true;
+        while (noExit)
+        {
+            randomNumber = Math.floor(Math.random() * (numOfFacts)) + min;
+            if (randomNumber != lastNumber1 && randomNumber != lastNumber2 && randomNumber != lastNumber3)
+            {
+                noExit = false;
+            }
+        }
+    }
     
     if (randomNumber > 0 && randomNumber <= numOfFacts)
     {
@@ -142,6 +176,7 @@ window.onload = function() {
                 document.getElementById("cool-fact").innerText = "Something went wrong! Please report this error using the feedback button below!";
                 break;
         }
+        return false;
     };
 };
 
